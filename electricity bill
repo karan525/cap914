@@ -1,0 +1,54 @@
+using System;
+
+namespace ElectricityBill
+{
+    class Dec
+    {
+        public Double basicBill, surcharge=0.0375, samt,tb,unit=10.5, units,ap=1000.0;
+        String name;
+        public void Insert()
+        {
+            Console.WriteLine("Enter your Basic Bill : ");
+            basicBill = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("\nEnter your name : ");
+            name = Console.ReadLine();
+            samt = basicBill * surcharge;
+            units = basicBill / unit;
+            if (units >= 0 && units < 200)
+            {
+                ap = 300.00;
+            }
+            else if(units >=200 && units<500)
+            {
+                ap = 500.00;
+            }
+            else
+            {
+                ap = 1000;
+            }
+            tb = basicBill + samt + ap;
+
+        }
+        public void Display()
+        {
+            Console.WriteLine("\n_______________________________________________________");
+            Console.WriteLine(" \n ------ " + name + "'s Electricity Bill - 2020 ------");
+            Console.WriteLine("\n   Basic Bill : Rs." + basicBill);
+            Console.WriteLine("\n   Surcharge Amount : Rs." + samt);
+            Console.WriteLine("\n   Units Consumed : " + units);
+            Console.WriteLine("\n   Additional Charges : Rs." + ap);
+            Console.WriteLine("________________________________________________________");
+            Console.WriteLine("\n   Total bill : Rs." + tb +"/-");
+            Console.WriteLine("________________________________________________________");
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Dec id1 = new Dec();
+            id1.Insert();
+            id1.Display();
+        }
+    }
+}
